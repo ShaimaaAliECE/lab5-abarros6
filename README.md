@@ -1,0 +1,1 @@
+The server script can be found in the same folder as this README file. That file is the point of entry to the server application. Running the server and navigating to the localhost at port 80 will allow one to interact with the frontend of the server.
