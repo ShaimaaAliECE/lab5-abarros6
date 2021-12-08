@@ -7,16 +7,26 @@
     <title>3316 Lab 5 Functionality 2</title>
 </head>
 <body>
-    <h2>Functionality 2</h2>
+
+    <h2>3316-Lab5-abarros6</h2>
+
+    <hr>
+
+    <h3>Functionality 2</h3>
 
     <h4>Description</h4>
 
     <p>
-        Enter the category you wish to find jobs with and then click the search button to return all the jobs with that category. 
+        Enter the category you wish to find jobs with and then click the search button to return all the jobs with that category. <br><b>You must click the submit button once the field has a value, do not hit enter to process the form.</b>
+    </p>
+
+    <p>
+        Some values to test with... ".net", "elasticsearch", "rest", "sql-server", "entity-framework"
     </p>
 
     <form action = "/:functionality2" >
-    <button type ='submit'>Search</button>
+        Category: <input type = 'text' id = 'foo2' name = 'category'/>
+        <input type ='button' value = 'Submit' onclick = "go2foo(document.getElementById('foo2').value)"></input>
     </form>
 
     <br>
@@ -26,5 +36,28 @@
     <br>
 
     <a href= '/'>Return to home page</a>
+
+    <script>
+        
+        function go2foo(path, method='get') {
+
+            let route = '/';
+            route += path;
+            console.log(route)
+            
+
+            // The rest of this code assumes you are not using a library.
+            // It can be made less verbose if you use one.
+            const form = document.createElement('form');
+            form.method = method;
+            form.action = route;
+
+            const hiddenField = document.createElement('input');
+            hiddenField.type = 'hidden';
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
 </body>
 </html>
