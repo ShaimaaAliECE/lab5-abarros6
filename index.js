@@ -47,10 +47,28 @@ app.get('/functionality1', (req, res) => {
 
 //Q2:
 //array to store categories and iterate through the json file
+
+//Q3:
+//last array to store jobs, find city name corresponding to job, push to another array and then convert back to json again.
+
+app.get('/functionality3', (req, res) => {
+    let jobCities = [];
+    console.log(req.query.city);
+    for (let j in jobs) {
+        if (jobs[j].title.includes(req.query.city)) {
+            jobCities.push(j);
+        }
+    }
+    res.json({
+        jobs: jobCities
+    })
+});
+
+
 app.get('/:functionality2', (req, res) => {
     let jobCategories = [];
     for (let j in jobs) {
-        if (jobs[j].categories.includes(req.params.category)) {
+        if (jobs[j].categories.includes(req.params['functionality2'])) {
             jobCategories.push(j);
         }
     }
@@ -58,18 +76,5 @@ app.get('/:functionality2', (req, res) => {
         jobs: jobCategories
     })
 });
-
-//Q3:
-//last array to store jobs, find city name corresponding to job, push to another array and then convert back to json again.
-app.get('/functionality3', (req, res) => {
-    let jobCities = {};
-    for (let j in jobs) {
-        if (jobs[j].title.includes(req.query.city)) {
-            jobCities[j] = jobs[j];
-        }
-    }
-    res.send(JSON.stringify(jobCities));
-});
-
 //listen to port 80 as per project instructions
 app.listen(80);
